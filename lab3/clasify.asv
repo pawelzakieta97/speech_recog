@@ -5,12 +5,11 @@ function label = clasify(filename, M)
     for class = 1:size(M,3)
         for feature = 1:size(M, 2)/2
             for t=1:samples
-                errors(class) = errors(class) + ((M(t, feature, class)-data(t, feature)))^2;
+                errors(class) = errors(class) + ((M(t, feature, class)-data(t, feature)))^2/M(t,feature * 2, class);
             end
         end
-        %errors(class) = errors(class)/
         %errors(class) = norm(M(:, 1:3, class)-data);
     end
-    %errors
+    errors
     [~, label] = min(errors);
 end

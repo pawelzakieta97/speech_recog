@@ -1,7 +1,8 @@
 function data = crop(data0)
 
 power = mean(sum(data0));
-mask = sum(data0)>power;
+min_power = min(sum(data0));
+mask = sum(data0)>(0.5*power+0.5*min_power);
 len = sum(mask);
 padding = int32(len/10);
 
